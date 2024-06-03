@@ -1,0 +1,221 @@
+1. List the directory contents date wise sorted. ( man ls)
+
+>> ls -l --sort=time hw
+
+total 40
+-rw-rw-r-- 1 sunbeam sunbeam   162 Jun  1 17:23 newinception.txt
+-rw-rw-r-- 1 sunbeam sunbeam    76 Jun  1 17:21 newincept
+-rw-rw-r-- 1 sunbeam sunbeam 26466 May 31 22:06 inception.txt
+-rw-rw-r-- 1 sunbeam sunbeam    91 May 31 20:55 incept.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. List the directory contents size wise sorted.(man ls)
+..
+>> ls -l -s -h hw
+total 40K
+ 28K -rw-rw-r-- 1 sunbeam sunbeam 26K May 31 22:06 inception.txt
+4.0K -rw-rw-r-- 1 sunbeam sunbeam  91 May 31 20:55 incept.txt
+4.0K -rw-rw-r-- 1 sunbeam sunbeam  76 Jun  1 17:21 newincept
+4.0K -rw-rw-r-- 1 sunbeam sunbeam 162 Jun  1 17:23 newinception.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. List directory contents along with their inode no. (man
+ls)
+..
+>> ls -l -i hw / ls -l --inode hw
+total 40
+7340651 -rw-rw-r-- 1 sunbeam sunbeam 26466 May 31 22:06 inception.txt
+7340654 -rw-rw-r-- 1 sunbeam sunbeam    91 May 31 20:55 incept.txt
+7340473 -rw-rw-r-- 1 sunbeam sunbeam    76 Jun  1 17:21 newincept
+7340658 -rw-rw-r-- 1 sunbeam sunbeam   162 Jun  1 17:23 newinception.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.List the contents of the subdirectory.
+..
+>> s -l movies/hw
+total 40
+-rw-rw-r-- 1 sunbeam sunbeam 26466 May 31 22:06 inception.txt
+-rw-rw-r-- 1 sunbeam sunbeam    91 May 31 20:55 incept.txt
+-rw-rw-r-- 1 sunbeam sunbeam    76 Jun  1 17:21 newincept
+-rw-rw-r-- 1 sunbeam sunbeam   162 Jun  1 17:23 newinception.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Create a file, write your surname and name in it and
+save.
+..
+>> cat > myinfo.txt
+Name : Abhi
+Sirname : Patil
+>> cat myinfo.txt
+Name : Abhi
+Sirname : Patil
+
+     i. now open the same file and add your address in it and save.
+      cat >> myinfo.txt
+      Address : Peth, Sangli
+
+     ii. reopen the same file and check your name and address in it.
+      cat myinfo.txt 
+      Name : Abhi
+      Sirname : Patil
+      Address : Peth, Sangli
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. how to change the time stamp of file (man touch)
+..
+
+ > ls -l myinfo.txt
+  -rw-rw-r-- 1 sunbeam sunbeam 51 Jun  1 17:47 myinfo.txt
+  
+ > touch myinfo.txt 
+ 
+ > ls -l myinfo.txt 
+-rw-rw-r-- 1 sunbeam sunbeam 51 Jun  1 17:49 myinfo.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Create directory structure : Give following commands ,
+-> mkdir one
+-> cd one
+-> touch 1.txt 11.txt 111.txt
+-> mkdir two
+-> cd two
+-> touch 2.txt 22.txt 222.txt
+-> mkdir three
+-> cd three
+-> touch 3.txt 33.txt 333.txt
+-> mkdir four
+-> cd four
+-> touch 4.txt 44.txt 444.txt
+-> mkdir five
+-> cd five
+-> touch 5.txt 55.txt 555.txt
+-> cd ~ (i.e. go to your home directory)
+
+..
+>>
+mkdir one
+info$ cd one
+info/one$ touch 1.txt 11.txt 111.txt
+info/one$ mkdir two
+info/one$ d two
+d: command not found
+info/one$ touch 2.txt 22.txt 222.txt
+info/one$ mkdir three
+info/one$ cd three
+info/one/three$ touch 3.txt 33.txt 333.txt
+info/one/three$ mkdir four
+info/one/three$ cd three
+bash: cd: three: No such file or directory
+info/one/three$ cd four
+info/one/three/four$ touch 4.txt 44.txt 444.tx
+info/one/three/four$ mv 444.tx 444.txt
+info/one/three/four$ ls -l
+total 0
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:53 444.txt
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:53 44.txt
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:53 4.txt
+info/one/three/four$ mkdir five
+info/one/three/four$ cd five
+info/one/three/four/five$ touch 5.txt 55.txt 555.txt
+info/one/three/four/five$ cd ~
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8. Considering above directory structure , Do following
+operations :
+
+
+i. list the directory contents of directory named
+"five" from current directory (i.e. home directory).
+..
+>>
+s -l  /home/sunbeam/PG-DAC\(ASSIGNMENTS\)/OS_Assignments/temp/info/one/two/three/four/five
+total 0
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:54 555.txt
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:54 55.txt
+-rw-rw-r-- 1 sunbeam sunbeam 0 Jun  1 17:54 5.txt
+
+ii. write your name in a file named "44.txt" of
+directory "four" from current directory.
+..
+>> cat >> /home/sunbeam/PG-DAC\(*ASSIGNMENTS\)*/OS_Assignments/temp/info/one/two/three/four/44.txt
+Abhimanyu Patil
+     
+iii. remove the file named "555.txt" from directory
+"five" from current directory.
+..              
+>> rm /home/sunbeam/PG-DAC\(*ASSIGNMENTS\)*/OS_Assignments/temp/info/one/two/three/four/five/555.txt
+
+iv. change directory to five
+( i.e. cd one/two/three/four/five/ ).
+
+ >> cd  /home/sunbeam/PG-DAC\(*ASSIGNMENTS\)*/OS_Assignments/temp/info/one/two/three/four/five
+
+
+v. write your course name in file named "3.txt" which
+resides in directory "three" from current directory (i.e.
+five).also read the same file.
+..
+cat >>  ../../3.txt | cat ../../3.txt
+Post Graduate Diploma in Advance Computing                                              
+
+cat ../../3.txt
+Post Graduate Diploma in Advance Computing
+
+vi. list the contents of directory "two" from current
+directory (i.e. five).
+..
+>>ls -l ../../../
+total 4
+-rw-rw-r-- 1 sunbeam sunbeam    0 Jun  1 17:52 222.txt
+-rw-rw-r-- 1 sunbeam sunbeam    0 Jun  1 17:52 22.txt
+-rw-rw-r-- 1 sunbeam sunbeam    0 Jun  1 17:52 2.txt
+drwxrwxr-x 3 sunbeam sunbeam 4096 Jun  1 17:53 three
+
+
+vii. remove file named "222.txt" which belongs to
+directory "two" from current directory (i.e. five)
+..
+>> rm  ../../../222.txt
+
+viii. now change the directory to "one"
+..
+>> cd ../../../../
+sunbeam@sunbeam-Victus-by-HP-Laptop-16-e0xxx:~/PG-DAC(ASSIGNMENTS)/OS_Assignments/temp/info/one$ 
+
+
+ix. remove all files only from directory named "five"
+from current directory (i.e. one)
+..
+>> rm two/three/four/five/*
+
+
+x. remove directory named "five" from current directory
+(i.e. one)
+..
+>>rm -r two/three/four/five
+
+xi. remove whole directory named "four" from current
+directory (i.e. one)
+..
+>>rm -r two/three/four
+
+xii. change to your home directory.
+..
+>> cd ~
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9. change the time stamp of file named "3.txt" which resides
+in directory named "three".(man touch)
+..
+>> touch /home/sunbeam/PG-DAC\(*ASSIGNMENTS\)*/OS_Assignments/temp/info/one/two/three/3.txt
+ 
+
+                                                                                                 * * * 
